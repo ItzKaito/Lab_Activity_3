@@ -1,74 +1,129 @@
-package pkg2d.pkg3d.calculator;
-
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-
-public class Calculator {
-
  public static void main(String[] args) {
-        String JOption1 = JOptionPane.showInputDialog("2D and 3D Calculator" 
-                                                     + "\nChoose a type of Calculator:"
-                                                     + "\n1 - Circle" 
-                                                     + "\n2 - Rectangle" 
-                                                     + "\n3 - Triangle"
-                                                     + "\n4 - Sphere"
-                                                     + "\n5 - Cylinder");
-        
-       double result = 0;
-       double length = 0;
-       double width = 0;
-       double base = 0;
-       double height = 0;
-       double radius = 0;
-       String a = "";
-       String b = "";
-       double res1 = Double.parseDouble(a);
-       double res2 = Double.parseDouble(b);
-       int JOption2 = Integer.parseInt(JOption1);
-       
-       switch (JOption2) {
-           case 1:
-               a = JOptionPane.showInputDialog("Input the Radius to get the Area of the Circle:");
-               radius = Double.parseDouble(a);
-               result = Math.PI * radius * radius;
-               JOptionPane.showMessageDialog(null, "The Area of the Circle = " + result);
-               break;
-               
-           case 2:
-               a = JOptionPane.showInputDialog("Input the Length to get the Area of the Recatngle:");
-               b = JOptionPane.showInputDialog("Input the Width t0 get the Area of the Rectangle:");
-               length = Double.parseDouble(a);
-               width = Double.parseDouble(b);
-               result = length * width;
-               JOptionPane.showMessageDialog(null, "The Area of the Recatangle = "+ result);
-               break;
-               
-           case 3:
-               a = JOptionPane.showInputDialog("Input the Base to get the Area of the Triangle:");
-               b = JOptionPane.showInputDialog("Input the Height to get the Area of the Triangle:");
-               base = Double.parseDouble(a);
-               height = Double.parseDouble(b);
-               result = 1/2 * base * height;
-               JOptionPane.showMessageDialog(null, "The Area of the Triangle = " + result);
-               break;
-               
-           case 4:
-               a = JOptionPane.showInputDialog("Input the Radius to get the Area of the Sphere:");
-               radius = Double.parseDouble(a);
-               result = 4/3 * Math.PI * radius * radius * radius;
-               JOptionPane.showMessageDialog(null, "The Area of the Sphere = " + result);
-               break;
-               
-           case 5:
-               a = JOptionPane.showInputDialog("Input the Radius to get the Area of the Cylinder:");
-               b = JOptionPane.showInputDialog("Input the Height to get the Area of the Cylinder:");
-               radius = Double.parseDouble(a);
-               height = Double.parseDouble(b);
-               result = Math.PI * radius * radius * height;
-               JOptionPane.showMessageDialog(null, "The Area of the Cylinder = " + result);
-               break;
-       }
-       
+
+        boolean loop = true;
+        while (loop) {
+            String JOption1 = JOptionPane.showInputDialog("2D and 3D Calculator"
+                    + "\nChoose a type of Calculator:"
+                    + "\n1 - Circle"
+                    + "\n2 - Rectangle"
+                    + "\n3 - Triangle"
+                    + "\n4 - Sphere"
+                    + "\n5 - Cylinder");
+
+            double result = 0;
+            double length = 0;
+            double width = 0;
+            double base = 0;
+            double height = 0;
+            double radius = 0;
+            double angle = 0;
+            double anglec = 0;
+            double num1 = 0;
+            double num2 = 0;
+            String a = "";
+            String b = "";
+            String c = "";
+            int JOption2 = Integer.parseInt(JOption1);
+
+            switch (JOption2) {
+                case 1:
+                    a = JOptionPane.showInputDialog("Input the Radius to get the Area of the Circle:");
+                    radius = Double.parseDouble(a);
+                    result = Math.PI * radius * radius;
+                    JOptionPane.showMessageDialog(null, "The Area of the Circle = " + result);
+                    break;
+
+                case 2:
+                    a = JOptionPane.showInputDialog("Input the Length to get the Area of the Recatngle:");
+                    b = JOptionPane.showInputDialog("Input the Width t0 get the Area of the Rectangle:");
+                    length = Double.parseDouble(a);
+                    width = Double.parseDouble(b);
+                    result = length * width;
+                    JOptionPane.showMessageDialog(null, "The Area of the Recatangle = " + result);
+                    break;
+
+                case 3:
+                    a = JOptionPane.showInputDialog("Input the Base to get the Area of the Triangle:");
+                    b = JOptionPane.showInputDialog("Input the Height to get the Area of the Triangle:");
+                    base = Double.parseDouble(a);
+                    height = Double.parseDouble(b);
+                    result = 1 / 2 * base * height;
+                    JOptionPane.showMessageDialog(null, "The Area of the Triangle = " + result);
+                    break;
+
+                case 4:
+                    a = JOptionPane.showInputDialog("Input the Radius to get the Volume of the Sphere:");
+                    radius = Double.parseDouble(a);
+                    JOptionPane.showMessageDialog(null, "The Area of the Sphere = " + calculateSphereVolume(radius));
+                    break;
+
+                case 5:
+                    a = JOptionPane.showInputDialog("Input the Radius to get the Area of the Cylinder:");
+                    b = JOptionPane.showInputDialog("Input the Height to get the Area of the Cylinder:");
+                    radius = Double.parseDouble(a);
+                    height = Double.parseDouble(b);
+                    result = Math.PI * radius * radius * height;
+                    JOptionPane.showMessageDialog(null, "The Area of the Cylinder = " + result);
+                    break;
+                case 6:
+                    a = JOptionPane.showInputDialog("Input the Radius to get theArea of the Segment of a Circle:");
+                    b = JOptionPane.showInputDialog("Input the Angle to get the Area of the Segment of a Circle:");
+                    radius = Double.parseDouble(a);
+                    angle = Double.parseDouble(b);
+                    JOptionPane.showMessageDialog(null, "The Area of the Segment of a Circle =" + calculateCircleSegmentArea(radius, angle));
+                    break;
+                case 7:
+                    a = JOptionPane.showInputDialog("Input side a to find the side c:");
+                    b = JOptionPane.showInputDialog("Input side b to find the side c:");
+                    c = JOptionPane.showInputDialog("Input the angle x to find the side c:");
+                    num1 = Double.parseDouble(a);
+                    num2 = Double.parseDouble(b);
+                    anglec = Double.parseDouble(c);
+                    JOptionPane.showMessageDialog(null, "The Length of side c is = " + calculateTriangleSide(num1, num2, anglec));
+                    break;
+                case 8:
+                    a = JOptionPane.showInputDialog("Input the Radius to calculate the Area of the Surface of the Sphere:");
+                    radius = Double.parseDouble(a);
+                    JOptionPane.showMessageDialog(null, "The Area of the Surface of the Sphere is = " + calculateSphereSurfaceArea(radius));
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "That is and Invalid Option, please select a number accordingly.");
+            }
+
+        }
     }
 
-}
+    public static double calculateCircleSegmentArea(double radius, double angle) {
+        if (radius <= 0 || angle <= 0) {
+            JOptionPane.showMessageDialog(null, "The Radius and the Angle must be a non-negative Integer.");
+            return -1;
+        }
+        double Radangle = Math.toRadians(angle);
+        return (Math.pow(radius, 2) / 2) * (Radangle - Math.sin(Radangle));
+    }
+
+    public static double calculateTriangleSide(double a, double b, double anglec) {
+        if (a <= 0 && b <= 0 && anglec <= 0 && anglec >= 180) {
+            JOptionPane.showMessageDialog(null, "a, b, and Angle c must be non-negative numbers and the Angle must be less than 180 degrees.");
+            return -1;
+        }
+        Double anglecradians = Math.toRadians(anglec);
+        double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2 * a * b * Math.cos(anglecradians));
+        return c;
+    }
+
+    public static double calculateSphereVolume(double radius) {
+        if (radius <= 0) {
+            JOptionPane.showMessageDialog(null, "The Radius must be greater than 0.");
+            return -1;
+        }
+        return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+    }
+
+    public static double calculateSphereSurfaceArea(double radius) {
+        if (radius <= 0) {
+            JOptionPane.showMessageDialog(null, "The Radius must be greater than 0.");
+            return -1;
+        }
+        return 4 * Math.PI * Math.pow(radius, 2);
+    }
